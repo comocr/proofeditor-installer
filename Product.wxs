@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <?include Vars.wxi?>
+  <Product Id='$(var.Product.GUID)' Name='Pankh ProofEditor' Language='1033' Version='0.9.5.0' Manufacturer='Pankh' UpgradeCode='$(var.Upgrade.GUID)'>
+
+    <Package InstallerVersion='200' Compressed='yes' Platform='$(var.Platform)'/>
+    <Icon Id='ProofEditor.ico' SourceFile='$(var.ProofEditor.IconFileName)' />
+    <Property Id='ARPPRODUCTICON' Value='ProofEditor.ico' />
+    <Property Id='WixAppFolder' Value='WixPerMachineFolder' />
+    
+    <Media Id='1' Cabinet='media1.cab' EmbedCab='yes' />
+
+		<Directory Id='TARGETDIR' Name='SourceDir'>
+      
+			<Directory Id='$(var.ProgramFiles.Dir)'>
+        <Directory Id='COMPANY_DIR' Name='Pankh'>
+          <Directory Id='PRODUCT_DIR' Name='OCR'>
+            
+            <Directory Id='INSTALLLOCATION' Name='ProofEditor'>
+
+              <Component Id='PROOFEDITOR_REG_LM' Guid='$(var.PROOFEDITOR_REG_LM.GUID)'>
+                <RegistryKey Id='PROOFEDITOR_REG_LM_R' Root='HKLM' Key='$(var.ProofEditor.KeyPath)' ForceCreateOnInstall='yes' ForceDeleteOnUninstall='yes'>
+                  <RegistryValue Type='string' Name='InstallDir' Value='[TARGETDIR]' />
+                  <RegistryValue Type='string' Name='Version' Value='[Version]' />
+                </RegistryKey>
+                <CreateFolder/>
+              </Component>
+
+              <Component Id='ORT_FILE_REG' Guid='$(var.ORT_FILE_REG.GUID)'>
+                <ProgId Id='ProofEditor_Position' Description='Position file for ProofEditor' Icon='PROOF_EDITOR_EXE'>
+                  <Extension Id='ort' ContentType='application/ort'>
+                    <Verb Id='Open' Command='Open' TargetFile='PROOF_EDITOR_EXE' Argument='%1' />
+                  </Extension>
+                </ProgId>
+                <CreateFolder/>
+              </Component>
+
+              <Component Id='PROOFEDITOR_EXECUTABLE' Guid='$(var.ProofEditorExecutable.GUID)'>
+                <File Id='PROOF_EDITOR_EXE' Name='ProofEditor.exe' DiskId='1' Source='$(var.ProofEditor.TargetFileName)' KeyPath='yes'/>
+                <File Id='PROOF_EDITOR_SPLASH' Name='Splash.bmp' DiskId='1' Source='$(var.ProofEditor.SplashFileName)' />
+              </Component>
+
+              <Component Id='PROOFEDITOR_SKT_KEYS' Guid='$(var.PROOFEDITOR_SKT_KEYS.GUID)'>
+                <File Id='PROOF_EDITOR_SKT_KEYS_PDF' Name='Shortcut Keys.pdf' DiskId='1' Source='$(var.ProofEdiotor.ShortcutKeys)' KeyPath='yes'/>
+              </Component>
+
+              <Directory Id='LANG_DIR' Name='Lang'>
+                <Component Id='LANGUAGE_ENGLISH' Guid='$(var.LanguageEnglish.GUID)'>
+                  <File Id='LANGUAGE_ENGLISH_DLL_MUI' Name='Res409.DLL.mui' DiskId='1' Source='$(var.Res409.TargetFileName)' KeyPath='yes'/>
+                </Component>
+
+                <Component Id='LANGUAGE_HINDI' Guid='$(var.LanguageHindi.GUID)'>
+                  <File Id='LANGUAGE_HINDI_DLL_MUI' Name='Res439.DLL.mui' DiskId='1' Source='$(var.Res439.TargetFileName)' KeyPath='yes'/>
+                </Component>
+
+                <Component Id='LANGUAGE_KANNADA' Guid='$(var.LanguageKannada.GUID)'>
+                  <File Id='LANGUAGE_KANNADA_DLL_MUI' Name='Res44B.DLL.mui' DiskId='1' Source='$(var.Res44B.TargetFileName)' KeyPath='yes'/>
+                </Component>
+
+                <Component Id='LANGUAGE_NEPALI' Guid='$(var.LanguageNepali.GUID)'>
+                  <File Id='LANGUAGE_NEPALI_DLL_MUI' Name='Res461.DLL.mui' DiskId='1' Source='$(var.Res461.TargetFileName)' KeyPath='yes'/>
+                </Component>
+              </Directory>
+              
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+ 
+      <Directory Id='ProgramMenuFolder' Name='Programs'>
+        
+        <Directory Id='program_menu_dir' Name='Pankh OCR'>
+
+          <Component Id='PROGRAM_MENU' Guid='$(var.ProgramMenuDir.GUID)'>
+            <RemoveFolder Id='program_menu_dir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='$(var.ProofEditor.KeyPath)' Type='string' Value='' KeyPath='yes' />
+          </Component>
+          
+          <Component Id='PROOFEDITOR_PROGRAM_MENU_SHORTCUT' Guid='$(var.ProofEditorProgramMenuShortcut.GUID)'>
+            <RegistryValue Root='HKCU' Key='$(var.ProofEditor.KeyPath)' Type='string' Value='' KeyPath='yes' />
+            <Shortcut Id='PROGRAM_MENU_PROOFEDITOR' Name='ProofEditor' Target='[#PROOF_EDITOR_EXE]' WorkingDirectory='INSTALLDIR' Advertise='no' />
+          </Component>
+
+          <Component Id='SHORTCUT_KEYS_SHORTCUT' Guid='$(var.ProgramMenuShortcutKeys.GUID)'>
+            <RegistryValue Root='HKCU' Key='$(var.ProofEditor.KeyPath)' Type='string' Value='' KeyPath='yes' />
+            <Shortcut Id='PROGRAM_MENU_SKT_KEYS' Name='ProofEditor' Target='[#PROOF_EDITOR_SKT_KEYS_PDF]' WorkingDirectory='INSTALLDIR' Advertise='no' />
+          </Component>
+          
+        </Directory>
+      </Directory>
+      
+      <Directory Id='DesktopFolder' Name='Desktop'>
+        <Component Id ='PROOFEDITOR_DESKTOP_SHORTCUT' Guid='$(var.ProofEditorDesktopShortcut.GUID)'>
+          <Condition>INSTALLDESKTOPSHORTCUT</Condition>
+
+          <RegistryValue Root='HKCU' Key='$(var.ProofEditor.KeyPath)' Type='string' Value='' KeyPath='yes' />
+          <Shortcut Id='DESKTOP_PROOFEDITOR' Name='ProofEditor' Target='[#PROOF_EDITOR_EXE]' WorkingDirectory='INSTALLDIR' Advertise='no' />
+
+        </Component>
+      </Directory>
+      
+    </Directory>
+
+    <Feature Id='Complete' Title='ProofEditor' Display='expand' Description='The Complete Package' Level='1' ConfigurableDirectory='INSTALLLOCATION'>
+      <Feature Id='PROGRAM' Title='Engine (required)' Level='1' Absent='disallow'>
+        <ComponentRef Id='PROOFEDITOR_REG_LM'/>
+        <ComponentRef Id='ORT_FILE_REG'/>
+        <ComponentRef Id='PROOFEDITOR_EXECUTABLE' Primary='yes'/>
+        <ComponentRef Id='PROOFEDITOR_PROGRAM_MENU_SHORTCUT' />
+        <ComponentRef Id='PROGRAM_MENU' />
+      </Feature>
+      <Feature Id='LANGUAGES' Title='Languages' Display='expand' Level='1'>
+        <Feature Id='ENGLISH' Title='English' Level='1' >
+          <ComponentRef Id='LANGUAGE_ENGLISH' />
+        </Feature>
+        <Feature Id='HINDI' Title='Hindi' Level='1000'>
+          <ComponentRef Id='LANGUAGE_HINDI' />
+        </Feature>
+        <Feature Id='KANNADA' Title='Kannada' Level='1000'>
+          <ComponentRef Id='LANGUAGE_KANNADA' />
+        </Feature>
+        <Feature Id='NEPALI' Title='Nepali' Level='1000'>
+          <ComponentRef Id='LANGUAGE_NEPALI' />
+        </Feature>
+      </Feature>
+      <Feature Id='SHORTCUT_KEYS_F' Title='Shortcut Keys' Level='1'>
+        <ComponentRef Id='PROOFEDITOR_SKT_KEYS'/>
+        <ComponentRef Id='SHORTCUT_KEYS_SHORTCUT' />
+      </Feature>
+      <Feature Id='DESKTOP_SHORTCUT' Title='Desktop Shortcut' Level='1'>
+        <ComponentRef Id='PROOFEDITOR_DESKTOP_SHORTCUT' />
+      </Feature>
+    </Feature>
+
+    <WixVariable Id='WixUILicenseRtf' Value='../Documents/EULA.rtf' />
+    <WixVariable Id='WixUIDialogBmp' Value='Resource/Dialog.bmp'/>
+    <WixVariable Id='WixUIBannerBmp' Value='Resource/Banner.bmp' />
+    <UIRef Id='WixUI_Advanced' />
+    <UIRef Id='WixUI_ErrorProgressText' />
+    <Property Id='WIXUI_INSTALLDIR' Value='INSTALLLOCATION' />
+    <Property Id='INSTALLDESKTOPSHORTCUT' Value='1' />
+  </Product>
+  
+</Wix>

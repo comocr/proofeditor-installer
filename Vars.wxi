@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  
+  <?define ProofEditor.IconFileName=..\Resource\ProofEditor.ico ?>
+  <?define PROOFEDITOR_REG_LM.GUID = "43051398-29C8-457D-80E3-7967AC896511" ?>
+  <?define ORT_FILE_REG.GUID = "D7CCC0DB-907A-4DED-B20D-55DE6A4F7BE4" ?>
+  <?define ProofEditor.KeyPath = "Software\[Manufacturer]\OCR\ProofEditor" ?>
+  <?define ProofEditor.SplashFileName=..\Resource\Splash.bmp ?>
+  <?define ProofEdiotor.ShortcutKeys=..\Documents\Shortcut Keys.pdf?>
+  <?define PROOFEDITOR_SKT_KEYS.GUID = "AE33D57A-6FE6-4585-A5C1-2CADCE2183EE" ?>
+
+  <?if $(var.Platform)=x64?>
+  
+    <?define ProgramFiles.Dir=ProgramFiles64Folder?>
+    <?define ProofEditor.TargetFileName=..\..\x64\Release\ProofEditor\ProofEditor\ProofEditor.exe ?>
+    <?define Res409.TargetFileName=..\..\x64\Release\ProofEditor\Lang\Res-en_US\Res.DLL.mui ?>
+    <?define Res439.TargetFileName=..\..\x64\Release\ProofEditor\Lang\Res-hi_IN\Res.DLL.mui ?>
+    <?define Res44B.TargetFileName=..\..\x64\Release\ProofEditor\Lang\Res-kn_IN\Res.DLL.mui ?>
+    <?define Res461.TargetFileName=..\..\x64\Release\ProofEditor\Lang\Res-ne_NP\Res.DLL.mui ?>
+    
+    <?define Product.GUID = "CFD9D424-E827-4F6E-88C7-F9E241B44A0E" ?>
+    <?define Upgrade.GUID = "CA7CDE23-F3E3-4515-BB10-8F9362807CCF" ?>
+    <?define ProofEditorExecutable.GUID = "51E913D0-695E-48EE-8EBB-D4ECCCE73196" ?>
+    <?define LanguageEnglish.GUID = "A4845592-42A7-484A-9D8B-44C490CAC46A" ?>
+    <?define LanguageHindi.GUID = "57427537-D669-47B8-9010-188F792550A1" ?>
+    <?define LanguageKannada.GUID = "6CE447BB-FFED-4D76-845D-70B8B4A49355" ?>
+    <?define LanguageNepali.GUID = "95FE4FD4-DAB8-470B-9363-AD310D1545E0" ?>
+    <?define ProgramMenuDir.GUID = "E3F97C21-DFB4-4604-B1E2-6F8B547AD532" ?>
+    <?define ProofEditorProgramMenuShortcut.GUID = "8B50A29A-2035-4987-99B8-71AC09A099A7" ?>
+    <?define ProgramMenuProofEditor.GUID = "32BB74D4-4CA5-493E-AF02-FA6EFD4C043A" ?>
+    <?define ProgramMenuShortcutKeys.GUID = "2470F4A7-C8E0-4079-B1FF-7BFF1E404DFD" ?>
+    <?define ProofEditorDesktopShortcut.GUID = "BBCAB304-36A5-4AA8-83CC-1496995100F4" ?>
+
+  <?else?>
+
+    <?define ProgramFiles.Dir=ProgramFilesFolder ?>
+    <?define ProofEditor.TargetFileName=..\..\x86\Release\ProofEditor\ProofEditor\ProofEditor.exe ?>
+    <?define Res409.TargetFileName=..\..\x86\Release\ProofEditor\Lang\Res-en_US\Res.DLL.mui ?>
+    <?define Res439.TargetFileName=..\..\x86\Release\ProofEditor\Lang\Res-hi_IN\Res.DLL.mui ?>
+    <?define Res44B.TargetFileName=..\..\x86\Release\ProofEditor\Lang\Res-kn_IN\Res.DLL.mui ?>
+    <?define Res461.TargetFileName=..\..\x86\Release\ProofEditor\Lang\Res-ne_NP\Res.DLL.mui ?>
+
+    <?define Product.GUID = "C1E7234F-B90E-497A-BE3F-9E1196439629" ?>
+    <?define Upgrade.GUID = "897b9364-8e44-4609-b5ac-56f2d71528f1" ?>
+    <?define ProofEditorExecutable.GUID = "A759FCF0-6C11-45FD-A498-7CB809170049" ?>
+    <?define LanguageEnglish.GUID = "45BBE7C8-E8FC-4798-B442-90D9B914FF51" ?>
+    <?define LanguageHindi.GUID = "2D19A56E-8A1C-4C45-A204-098960B1E714" ?>
+    <?define LanguageKannada.GUID = "6C73D463-C7A9-4FDC-870D-404A8DFE25EF" ?>
+    <?define LanguageNepali.GUID = "44B3DB5E-8FF4-4527-9A9F-35DFBF0977BA" ?>
+    <?define ProgramMenuDir.GUID = "FD17E259-9011-459C-AB56-F396A9FF9E7A" ?>
+    <?define ProofEditorProgramMenuShortcut.GUID = "018D66F7-E0A5-4912-A6ED-8698048533B2" ?>
+    <?define ProgramMenuProofEditor.GUID = "8A037E3D-6007-4725-8902-31A0C47D191B" ?>
+    <?define ProgramMenuShortcutKeys.GUID = "0A8C0FB3-D1DE-466A-9D46-1C900D741505" ?>
+    <?define ProofEditorDesktopShortcut.GUID = "B3A3BDEE-67A9-44E3-9669-EAF52B87F340" ?>
+  
+  <?endif?>
+  
+</Include>
