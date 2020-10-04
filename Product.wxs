@@ -137,7 +137,7 @@
     <WixVariable Id='WixUIBannerBmp' Value='Resource/Banner.bmp' />
     <UIRef Id='WixUI_Advanced' />
     <UIRef Id='WixUI_ErrorProgressText' />
-    <Property Id='WIXUI_INSTALLDIR' Value='INSTALLLOCATION' />
+    <Property Id='ApplicationFolderName' Value='INSTALLLOCATION' />
     <Property Id='INSTALLDESKTOPSHORTCUT' Value='1' />
   </Product>
   
