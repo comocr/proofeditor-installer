@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
   
-  <?define ProofEditor.IconFileName=..\Resource\ProofEditor.ico ?>
+  <?define Project.TITLE = ProofEditor ?>
+  <?define ProofEditor.IconFileName = ..\Resource\ProofEditor.ico ?>
   <?define PROOFEDITOR_REG_LM.GUID = "43051398-29C8-457D-80E3-7967AC896511" ?>
   <?define ORT_FILE_REG.GUID = "D7CCC0DB-907A-4DED-B20D-55DE6A4F7BE4" ?>
   <?define ProofEditor.KeyPath = "Software\[Manufacturer]\OCR\ProofEditor" ?>
-  <?define ProofEditor.SplashFileName=..\Resource\Splash.bmp ?>
-  <?define ProofEdiotor.ShortcutKeys=..\Documents\Shortcut Keys.pdf?>
-  <?define PROOFEDITOR_SKT_KEYS.GUID = "AE33D57A-6FE6-4585-A5C1-2CADCE2183EE" ?>
+  <?define ProofEditor.SplashFileName = ..\Resource\Splash.bmp ?>
+  <?define ProofEdiotor.ShortcutKeys = ..\Documents\Shortcut Keys.pdf?>
 
   <?if $(var.Platform)=x64?>
   
-    <?define ProgramFiles.Dir=ProgramFiles64Folder?>
-    <?define ProofEditor.TargetFileName=..\..\x64\Release\ProofEditor\ProofEditor\ProofEditor.exe ?>
-    <?define Res409.TargetFileName=..\..\x64\Release\ProofEditor\Lang\Res-en_US\Res.DLL.mui ?>
-    <?define Res439.TargetFileName=..\..\x64\Release\ProofEditor\Lang\Res-hi_IN\Res.DLL.mui ?>
-    <?define Res44B.TargetFileName=..\..\x64\Release\ProofEditor\Lang\Res-kn_IN\Res.DLL.mui ?>
-    <?define Res461.TargetFileName=..\..\x64\Release\ProofEditor\Lang\Res-ne_NP\Res.DLL.mui ?>
-    
+    <?define ProgramFiles.Dir=ProgramFiles64Folder ?>
+
+    <?define Platform.TITLE = x64 ?>
+  
     <?define Product.GUID = "CFD9D424-E827-4F6E-88C7-F9E241B44A0E" ?>
     <?define Upgrade.GUID = "CA7CDE23-F3E3-4515-BB10-8F9362807CCF" ?>
     <?define ProofEditorExecutable.GUID = "51E913D0-695E-48EE-8EBB-D4ECCCE73196" ?>
@@ -30,16 +27,14 @@
     <?define ProgramMenuProofEditor.GUID = "32BB74D4-4CA5-493E-AF02-FA6EFD4C043A" ?>
     <?define ProgramMenuShortcutKeys.GUID = "2470F4A7-C8E0-4079-B1FF-7BFF1E404DFD" ?>
     <?define ProofEditorDesktopShortcut.GUID = "BBCAB304-36A5-4AA8-83CC-1496995100F4" ?>
+    <?define PROOFEDITOR_SKT_KEYS.GUID = "AE33D57A-6FE6-4585-A5C1-2CADCE2183EE" ?>
 
   <?else?>
 
     <?define ProgramFiles.Dir=ProgramFilesFolder ?>
-    <?define ProofEditor.TargetFileName=..\..\x86\Release\ProofEditor\ProofEditor\ProofEditor.exe ?>
-    <?define Res409.TargetFileName=..\..\x86\Release\ProofEditor\Lang\Res-en_US\Res.DLL.mui ?>
-    <?define Res439.TargetFileName=..\..\x86\Release\ProofEditor\Lang\Res-hi_IN\Res.DLL.mui ?>
-    <?define Res44B.TargetFileName=..\..\x86\Release\ProofEditor\Lang\Res-kn_IN\Res.DLL.mui ?>
-    <?define Res461.TargetFileName=..\..\x86\Release\ProofEditor\Lang\Res-ne_NP\Res.DLL.mui ?>
 
+    <?define Platform.TITLE = x86 ?>
+  
     <?define Product.GUID = "C1E7234F-B90E-497A-BE3F-9E1196439629" ?>
     <?define Upgrade.GUID = "897b9364-8e44-4609-b5ac-56f2d71528f1" ?>
     <?define ProofEditorExecutable.GUID = "A759FCF0-6C11-45FD-A498-7CB809170049" ?>
@@ -52,7 +47,14 @@
     <?define ProgramMenuProofEditor.GUID = "8A037E3D-6007-4725-8902-31A0C47D191B" ?>
     <?define ProgramMenuShortcutKeys.GUID = "0A8C0FB3-D1DE-466A-9D46-1C900D741505" ?>
     <?define ProofEditorDesktopShortcut.GUID = "B3A3BDEE-67A9-44E3-9669-EAF52B87F340" ?>
-  
+    <?define PROOFEDITOR_SKT_KEYS.GUID = "AE33D57A-6FE6-4585-A5C1-2CADCE275A2C" ?>
+
   <?endif?>
+
+  <?define ProofEditor.TargetFileName=..\..\$(var.Platform.TITLE)\$(var.Configuration)\$(var.Project.TITLE)\$(var.Project.TITLE)\$(var.Project.TITLE).exe ?>
+  <?define Res409.TargetFileName=..\..\$(var.Platform.TITLE)\$(var.Configuration)\$(var.Project.TITLE)\Lang\Res-en_US\Res.DLL.mui ?>
+  <?define Res439.TargetFileName=..\..\$(var.Platform.TITLE)\$(var.Configuration)\$(var.Project.TITLE)\Lang\Res-hi_IN\Res.DLL.mui ?>
+  <?define Res44B.TargetFileName=..\..\$(var.Platform.TITLE)\$(var.Configuration)\$(var.Project.TITLE)\Lang\Res-kn_IN\Res.DLL.mui ?>
+  <?define Res461.TargetFileName=..\..\$(var.Platform.TITLE)\$(var.Configuration)\$(var.Project.TITLE)\Lang\Res-ne_NP\Res.DLL.mui ?>
   
 </Include>
